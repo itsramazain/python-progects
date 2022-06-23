@@ -1,0 +1,146 @@
+import random
+from random import shuffle
+import time
+suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
+ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
+values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8,
+            'Nine':9, 'Ten':10, 'Jack':11, 'Queen':12, 'King':13, 'Ace':14}
+class Card():
+    def __init__(self,rank,suit):
+        self.suit=suit
+        self.rank=rank
+        self.value=values[self.rank]
+    def __str__(self):
+        return f'{self.rank} of {self.suit}'
+class Deck():
+    def __init__(self):
+        self.all_cards=[]
+        for suit in suits:
+            for rank in ranks:
+                self.all_cards.append(Card(rank,suit))
+    def takefromdeck(self):
+        self.all_cards.pop(0)
+    def shuffle(self):
+        shuffle(self.all_cards)
+    def __len__(self):
+        return len(self.all_cards)
+class Plyer():
+    def __init__(self):
+        self.cardsinhand=[]
+    def add(self,card):
+        if type(card)==type([]):
+            self.cardsinhand.extend(card)
+        else:
+            self.cardsinhand.append(card)
+    def takefromcardinhandtoplay(self):
+        return self.cardsinhand.pop(0)
+deck=Deck().all_cards
+shuffle(deck)
+plyer1=Plyer()
+plyer2=Plyer()
+for cards in deck:
+    for _ in range(26):
+        card_taken = deck.pop(0)
+        plyer1.add(card_taken)
+    if len(deck)==26:
+        break
+for cards in deck:
+    for _ in range(26):
+        card_taken2 = deck.pop(0)
+        plyer2.add(card_taken2)
+    if len(deck) == 0:
+        break
+plyer1cards=[]
+plyer2cards=[]
+while True:
+    card1=plyer1.takefromcardinhandtoplay()
+    print(card1)
+    plyer1cards.append(card1)
+    if len(plyer1.cardsinhand)==0:
+        print('plyer2 win')
+        break
+    if len(plyer2.cardsinhand) == 0:
+        print('plyer1 win')
+        break
+    card2=plyer2.takefromcardinhandtoplay()
+    plyer2cards.append(card2)
+    if len(plyer1.cardsinhand)==0:
+        print('plyer2 win')
+        break
+    if len(plyer2.cardsinhand) == 0:
+        print('plyer1 win')
+        break
+
+    print(card2)
+    time.sleep(1)
+    if card1.value>card2.value:
+        plyer1.add(card2)
+        plyer1.add(card1)
+        print('plyer1 W')
+        print(card1,'>',card2)
+        continue
+    elif card2.value>card1.value:
+        plyer1.add(card2)
+        plyer1.add(card1)
+        print('plyer2 W')
+        print(card2, '>', card1)
+        continue
+    if len(plyer1.cardsinhand)==0:
+        print('plyer2 win')
+        break
+    if len(plyer2.cardsinhand) == 0:
+        print('plyer1 win')
+        break
+    else:
+        time.sleep(1)
+        print('at war')
+        x='on'
+        while True:
+            cards1=[]
+            plyer1cards.append(cards1)
+            cards2 = []
+            plyer2cards.append(cards2)
+            for _ in range(6):
+                cardsatwar=plyer1.takefromcardinhandtoplay()
+                cards1.append(cardsatwar)
+            if len(plyer1.cardsinhand) < 6:
+                print('plyer2 won')
+                break
+            if len(plyer2.cardsinhand) < 6:
+                print('plyer2 won')
+                break
+            for _ in range(6):
+                cardsatwar2 = plyer2.takefromcardinhandtoplay()
+                cards2.append(cardsatwar2)
+            if cards1[-1].value>cards2[-1].value:
+                time.sleep(1)
+                print('plyer1 W')
+                print(cards1[-1],'>',cards2[-1])
+                plyer1.add(cards2)
+                plyer1.add(cards1)
+                break
+            if cards2[-1].value>cards1[-1].value:
+                time.sleep(1)
+                print('plyer2 W')
+                print(cards2[-1],'>',cards1[-1])
+                plyer2.add(cards2)
+                plyer2.add(cards1)
+                break
+            if cards2[-1].value==cards1[-1].value:
+                continue
+            if len(plyer1.cardsinhand)<6:
+                print('plyer2 won')
+                break
+            if len(plyer2.cardsinhand)<6:
+                print('plyer2 won')
+                break
+
+
+
+
+
+
+
+
+
+
