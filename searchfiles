@@ -19,8 +19,24 @@ ordfiles=[]
 for dirictorys,folders,files in os.walk('C:\\Users\sawa\PycharmProjects\learning\instructions\extracted_content'):
     for file in files:
         lookfor(re.findall(r'\W\w+$',dirictorys)[0],file)
+        
+        
+        
+        
+METHOD NUBER 2:
 
 
+
+def lookfor(file_path):
+    phone_Nnumber=[]
+    opened_file=open(str(file_path))
+    for line in opened_file:
+        phone_Nnumber=re.findall(r'\d{3}-\d{3}-\d{4}',line)
+        if phone_Nnumber!=[]:
+            print(phone_Nnumber[0])
+for directory,folder,files in os.walk('C:\\Users\sawa\PycharmProjects\learning\instructions\extracted_content'):
+        for file in files:
+            lookfor(directory+'\\'+file)
 
 
 
