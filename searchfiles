@@ -1,0 +1,29 @@
+'''
+this simple code serches for a phone numbers in a folder that has 5 folders and evry folder has a .txt file and it goes thow each file and search for the number
+not very importNT BUT IM VERY PROUD OF HOW IT TURED OUT
+'''
+
+import zipfile
+import os
+import re
+import shutil
+def lookfor(folder_name,file_name):
+    the_phone_number=[]
+    opened_file=open(str('C:\\Users\sawa\PycharmProjects\learning\instructions\extracted_content' +folder_name+'\\'+file_name),'r')
+    for line in opened_file:
+        the_phone_number=re.findall(r'\d{3}-\d{3}-\d{4}',line)
+        if the_phone_number !=[]:
+            print(the_phone_number)
+ordfolders=[]
+ordfiles=[]
+for dirictorys,folders,files in os.walk('C:\\Users\sawa\PycharmProjects\learning\instructions\extracted_content'):
+    for file in files:
+        lookfor(re.findall(r'\W\w+$',dirictorys)[0],file)
+
+
+
+
+
+
+
+
