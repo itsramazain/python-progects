@@ -1,0 +1,60 @@
+'''
+this code webscrapes the toscrape.com book page and gets the most expinsive book and the cheapest 
+'''
+import requests
+from bs4 import BeautifulSoup
+import re
+n=1
+lowest_price=None
+lowest_name=None
+lowest_link=None
+lowest_rating=None
+higest_price=None
+higest_name=None
+higest_link=None
+higest_rating=None
+while True:
+    rsult=requests.get(f'https://books.toscrape.com/catalogue/page-{n}.html')
+    soup=BeautifulSoup(rsult.text,'lxml')
+    try:
+        str(soup.find_all('center')[0].find_all('h1')[0].string)=='404 Not Found'
+        break
+    except:
+        pass
+    for bookinfo in soup.find_all(class_='product_pod'):
+        booktitle=bookinfo.find_all('a')[1]['title']
+        l1=re.findall(r'[0-9]+',str(bookinfo.find_all('p',class_='price_color')[0].string))
+        bookprice='£'+'.'.join(l1)
+        l2=bookinfo.find_all('i',class_='icon-star')[0].parent['class']
+        bookrating=' '.join(l2)
+        booklink='https://books.toscrape.com/catalogue/'+bookinfo.find_all('a')[1]['href']
+        rsult2=requests.get(booklink)
+        soup2=BeautifulSoup(rsult2.text,'lxml')
+        if lowest_name is None:
+            lowest_price = bookprice
+            lowest_name = booktitle
+            lowest_link = booklink
+            lowest_rating=bookrating
+        elif lowest_price>bookprice:
+            lowest_price = bookprice
+            lowest_name = booktitle
+            lowest_link = booklink
+        if higest_name is None:
+            higest_price = bookprice
+            higest_name = booktitle
+            higest_link = booklink
+            higest_rating=bookrating
+        elif higest_price<bookprice:
+            higest_price = bookprice
+            higest_name = booktitle
+            higest_link = booklink
+            higest_rating = bookrating
+print(f'the most expensive book here is {higest_name} and it was {higest_price} and it rated {higest_rating}')
+print(f'the link: {higest_link}')
+print(f'the least expensive book here is {lowest_name} and it was {lowest_price} and it rated {lowest_rating}')
+print(f'the link: {lowest_link}')
+
+
+
+
+
