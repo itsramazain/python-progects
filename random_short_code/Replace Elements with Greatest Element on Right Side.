@@ -1,0 +1,19 @@
+goal=list()
+def simple(arr):
+    while True:
+        big = None
+        arr.pop(0)
+        if len(arr)>1:
+            for num in arr:
+                if big is None:
+                    big=num
+                if big<=num:
+                    big=num
+            print(big)
+            goal.append(big)
+
+        if len(arr)==2:
+            goal.append(arr[-1])
+            goal.append(-1)
+            break
+    return goal
