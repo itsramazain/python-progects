@@ -1,0 +1,39 @@
+import bs4
+import re
+import requests
+nuberof2starrating=[]
+for page_number in range(1,51):
+    result=requests.get(f'http://books.toscrape.com/catalogue/page-{page_number}.html')
+    soup=bs4.BeautifulSoup(result.text,'lxml')
+    list_of_evy_bookinfo = soup.select('.product_pod')
+    for book_number in range(20):
+        one_bookinfo=list_of_evy_bookinfo[book_number]
+        bookrating=one_bookinfo.select('.star-rating.Two')
+        if bookrating!=[]:
+            togettitle=one_bookinfo.select('a')[1]
+            booktitle=togettitle['title']
+            nuberof2starrating.append(booktitle)
+print(len(nuberof2starrating))
+result=requests.get('https://quotes.toscrape.com/page/1/')
+soup=bs4.BeautifulSoup(result.text,'lxml')
+names_of_auther=[]
+listofthecode=soup.select('.author')
+for one_code in listofthecode:
+    name=one_code.getText()
+    if name not in names_of_auther:
+        names_of_auther.append(name)
+print(names_of_auther)
+quetelist=[]
+listofcodethathasnames=soup.select('.text')
+for cod in listofcodethathasnames:
+    quote=cod.get_text()
+    quetelist.append(quote)
+print(quetelist)
+tags=[]
+listoftallcode=soup.select('.tag-item')
+for tallcode in listoftallcode:
+    cod1=tallcode.select('a')
+    for cods in cod1:
+        tags.append(cods.get_text())
+for tag in tags:
+    print(tag)
