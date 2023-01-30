@@ -247,19 +247,25 @@ def whowon():
 
 while not whowon() :
     whowon()
+    if whowon():
+        continue
     choice1=player1in()
     plyer1choices.append(choice1)
     bigtable(choice1)
+    smtable(choice1, '')
     for letter in [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r]:
         print(letter)
-        if whowon():
-            continue
+    if whowon():
+        break
     choice2=player2in()
     plyer2choices.append(choice2)
     bigtable('',choice2)
-    smtable(choice1, choice2)
+    smtable('', choice2)
     for letter in [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r]:
         print(letter)
+
+
+
 
 
 
