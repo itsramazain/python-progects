@@ -1,50 +1,42 @@
 print('welcom to a game of tic tac toe this game will automatically select  x for the first player\n'
 'and o for the second player keep in mind that you need 3 slots to win the game and the bord will show up every time you\n'
-      'play if you want to exit the game you should enter(exit) in the input of player 1 or player2'
+      'play '
       '')
-num1=list()
-num2=list()
-def plyer1in():
+print([" 1 "," 2 "," 3 "])
+print([" 4 "," 5 "," 6 "])
+print([" 7 "," 8 "," 9 "])
+plyer1choices=[]
+plyer2choices=[]
+def player1in():
     while True:
         try:
-            a=int(input('plyer1(x) choose a spot between 1 AND 9 in the table above'))
+            i=int(input("player one enter a slot number from 1 to 9 from the table above : "))
         except ValueError:
-            print('you entered a wrong input it should be in digets not in letters')
+            print("the slot number should be in digits please try again")
             continue
-        if a not in range(1,10):
-                 print('you enterd a wrong slot number it should be between 1 and 9 ')
-                 continue
-        if a in num1 or a in num2:
-                 print('that slot is taken please enter an empyt slot')
-                 continue
+        if i not in range(1,10):
+            print("the sopt is out of range it should be between 1 and 9")
+            continue
+        if i  in plyer1choices and i  in plyer2choices:
+            print("the slot is taken")
+            continue
         else:
-            return a
-            break
-def plyer2in():
+            return i
+def player2in():
     while True:
         try:
-            a=int(input('plyer2(o) choose a spot between 1 AND 9 in the table above'))
+            i=int(input("player two enter a slot number from 1 to 9 from the table above : "))
         except ValueError:
-            print('you entered a wrong input it should be in digets not in letters')
+            print("the slot number should be in digits please try again")
             continue
-        if a not in range(1,10):
-                 print('you enterd a wrong slot number it should be between 1 and 9 ')
-                 continue
-        if a in num1 or a in num2:
-                 print('that slot is taken please enter an empyt slot')
-                 continue
+        if i not in range(1,10):
+            print("the sopt is out of range it should be between 1 and 9")
+            continue
+        if i  in plyer1choices and i  in plyer2choices:
+            print("the slot is taken")
+            continue
         else:
-            return a
-            break
-
-
-row1=['1 ','2 ','3 ']
-row2=[' 4','5 ','6 ']
-row3=[' 7','8 ','9 ']
-print(row1)
-print(row2)
-print(row3)
-random=None
+            return i
 a = ['    ', '╭╮', '    ', '╭╮', '    ']
 b = ['    ', '┃┃', '    ', '┃┃', '    ']
 c = ['    ', '┃┃', '    ', '┃┃', '    ']
@@ -66,7 +58,9 @@ r = ['    ', '╰╯', '    ', '╰╯', '    ']
 r1 = [' ', ' ', '  ']
 r2 = [' ', ' ', ' ']
 r3 = [' ', ' ', ' ']
-def smatlbe(A, B):
+for letter in [a,b,c,d,e,f,g,h,i,g,k,l,m,n,o,p,q,r]:
+    print(letter)
+def smtable(A='',B=''):
     if A == 1:
         r1[0]= 'x'
     if A == 2:
@@ -103,6 +97,100 @@ def smatlbe(A, B):
         r3[1]='o'
     if B == 9:
         r3[2]= 'o'
+
+def bigtable(A="",B=""):
+    if A == 1:
+        a[0] = '╭╮╭╮'
+        b[0] = '╰╋╋╯'
+        c[0] = '╭╋╋╮'
+        d[0] = '╰╯╰╯'
+    elif A == 2:
+        a[2] = '╭╮╭╮'
+        b[2] = '╰╋╋╯'
+        c[2] = '╭╋╋╮'
+        d[2] = '╰╯╰╯'
+    elif A == 3:
+        a[4] = '╭╮╭╮'
+        b[4] = '╰╋╋╯'
+        c[4] = '╭╋╋╮'
+        d[4] = '╰╯╰╯'
+    elif A == 4:
+        h[0] = '╭╮╭╮'
+        i[0] = '╰╋╋╯'
+        j[0] = '╭╋╋╮'
+        k[0] = '╰╯╰╯'
+    if A == 5:
+        h[2] = '╭╮╭╮'
+        i[2] = '╰╋╋╯'
+        j[2] = '╭╋╋╮'
+        k[2] = '╰╯╰╯'
+    elif A == 6:
+        h[4] = '╭╮╭╮'
+        i[4] = '╰╋╋╯'
+        j[4] = '╭╋╋╮'
+        k[4] = '╰╯╰╯'
+    elif A == 7:
+        n[0] = '╭╮╭╮'
+        o[0] = '╰╋╋╯'
+        p[0] = '╭╋╋╮'
+        q[0] = '╰╯╰╯'
+    elif A == 8:
+        n[2] = '╭╮╭╮'
+        o[2] = '╰╋╋╯'
+        p[2] = '╭╋╋╮'
+        q[2] = '╰╯╰╯'
+    elif A == 9:
+        n[4] = '╭╮╭╮'
+        o[4] = '╰╋╋╯'
+        p[4] = '╭╋╋╮'
+        q[4] = '╰╯╰╯'
+    if B == 1:
+        a[0] = '┏━━┓'
+        b[0] = '┃┏┓┃'
+        c[0] = '┃┗┛┃'
+        d[0] = '┗━━┛'
+    elif B == 2:
+        a[2] = '┏━━┓'
+        b[2] = '┃┏┓┃'
+        c[2] = '┃┗┛┃'
+        d[2] = '┗━━┛'
+    elif B == 3:
+        a[4] = '┏━━┓'
+        b[4] = '┃┏┓┃'
+        c[4] = '┃┗┛┃'
+        d[4] = '┗━━┛'
+    elif B == 4:
+        h[0] = '┏━━┓'
+        i[0] = '┃┏┓┃'
+        j[0] = '┃┗┛┃'
+        k[0] = '┗━━┛'
+    elif B == 5:
+        h[2] = '┏━━┓'
+        i[2] = '┃┏┓┃'
+        j[2] = '┃┗┛┃'
+        k[2] = '┗━━┛'
+    elif B == 6:
+        h[4] = '┏━━┓'
+        i[4] = '┃┏┓┃'
+        j[4] = '┃┗┛┃'
+        k[4] = '┗━━┛'
+    elif B == 7:
+        n[0] = '┏━━┓'
+        o[0] = '┃┏┓┃'
+        p[0] = '┃┗┛┃'
+        q[0] = '┗━━┛'
+    elif B == 8:
+        n[2] = '┏━━┓'
+        o[2] = '┃┏┓┃'
+        p[2] = '┃┗┛┃'
+        q[2] = '┗━━┛'
+    elif B == 9:
+        n[4] = '┏━━┓'
+        o[4] = '┃┏┓┃'
+        p[4] = '┃┗┛┃'
+        q[4] = '┗━━┛'
+
+def whowon():
     if r1==['x','x','x'] :
         print('the winner is player1')
         return True
@@ -151,123 +239,34 @@ def smatlbe(A, B):
     elif r1[2]==r2[1]==r3[0]=='o':
         print('the winner is player2')
         return True
-    elif len(num1)==5:
+    elif len(plyer1choices)==5:
         print('its a draw')
         return True
     else:
         return False
 
-choice1='   '
-choice2='   '
-while smatlbe(choice1,choice2)==False:
-    def table(A, B):
-        if A == 1:
-            a[0]= '╭╮╭╮'
-            b[0]= '╰╋╋╯'
-            c[0]= '╭╋╋╮'
-            d[0]= '╰╯╰╯'
-        elif A == 2:
-            a[2]= '╭╮╭╮'
-            b[2]= '╰╋╋╯'
-            c[2]= '╭╋╋╮'
-            d[2]= '╰╯╰╯'
-        elif A == 3:
-            a[4]='╭╮╭╮'
-            b[4]='╰╋╋╯'
-            c[4]='╭╋╋╮'
-            d[4]='╰╯╰╯'
-        elif A == 4:
-            h[0]= '╭╮╭╮'
-            i[0]= '╰╋╋╯'
-            j[0]= '╭╋╋╮'
-            k[0]= '╰╯╰╯'
-        if A == 5:
-            h[2]='╭╮╭╮'
-            i[2]='╰╋╋╯'
-            j[2]='╭╋╋╮'
-            k[2]='╰╯╰╯'
-        elif A == 6:
-            h[4]= '╭╮╭╮'
-            i[4]= '╰╋╋╯'
-            j[4]= '╭╋╋╮'
-            k[4]= '╰╯╰╯'
-        elif A == 7:
-            n[0]= '╭╮╭╮'
-            o[0]= '╰╋╋╯'
-            p[0]= '╭╋╋╮'
-            q[0]= '╰╯╰╯'
-        elif A == 8:
-            n[2]='╭╮╭╮'
-            o[2]='╰╋╋╯'
-            p[2]='╭╋╋╮'
-            q[2]='╰╯╰╯'
-        elif A == 9:
-            n[4]='╭╮╭╮'
-            o[4]='╰╋╋╯'
-            p[4]='╭╋╋╮'
-            q[4]='╰╯╰╯'
-        if B == 1:
-            a[0]= '┏━━┓'
-            b[0]= '┃┏┓┃'
-            c[0]= '┃┗┛┃'
-            d[0]= '┗━━┛'
-        elif B == 2:
-            a[2]= '┏━━┓'
-            b[2]= '┃┏┓┃'
-            c[2]= '┃┗┛┃'
-            d[2]= '┗━━┛'
-        elif B == 3:
-            a[4]= '┏━━┓'
-            b[4]= '┃┏┓┃'
-            c[4]= '┃┗┛┃'
-            d[4]= '┗━━┛'
-        elif B == 4:
-            h[0]= '┏━━┓'
-            i[0]= '┃┏┓┃'
-            j[0]= '┃┗┛┃'
-            k[0]= '┗━━┛'
-        elif B == 5:
-            h[2]= '┏━━┓'
-            i[2]= '┃┏┓┃'
-            j[2]= '┃┗┛┃'
-            k[2]= '┗━━┛'
-        elif B == 6:
-            h[4]= '┏━━┓'
-            i[4]= '┃┏┓┃'
-            j[4]= '┃┗┛┃'
-            k[4]= '┗━━┛'
-        elif B == 7:
-            n[0]= '┏━━┓'
-            o[0]= '┃┏┓┃'
-            p[0]= '┃┗┛┃'
-            q[0]= '┗━━┛'
-        elif B == 8:
-            n[2]= '┏━━┓'
-            o[2]= '┃┏┓┃'
-            p[2]= '┃┗┛┃'
-            q[2]= '┗━━┛'
-        elif B == 9:
-            n[4]= '┏━━┓'
-            o[4]= '┃┏┓┃'
-            p[4]= '┃┗┛┃'
-            q[4]= '┗━━┛'
-        for letter in [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r]:
-            print(letter)
-    table(choice1, choice2)
-    smatlbe(choice1, choice2)
-    if smatlbe(choice1,choice2)==True:
-        break
-    player1='x'
-    player2='o'
-    choice1 = plyer1in()
-    num1.append(choice1)
-    table(choice1, choice2)
-    smatlbe(choice1, choice2)
-    if smatlbe(choice1, choice2) == True:
-        break
-    if len(num1)==5:
-        break
-    choice2=plyer2in()
-    num2.append(choice2)
+while not whowon() :
+    whowon()
+    choice1=player1in()
+    plyer1choices.append(choice1)
+    bigtable(choice1)
+    for letter in [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r]:
+        print(letter)
+        if whowon():
+            continue
+    choice2=player2in()
+    plyer2choices.append(choice2)
+    bigtable('',choice2)
+    smtable(choice1, choice2)
+    for letter in [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r]:
+        print(letter)
+
+
+
+
+
+
+
+
 
 
