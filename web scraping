@@ -55,6 +55,39 @@ print(f'the least expensive book here is {lowest_name} and it was {lowest_price}
 print(f'the link: {lowest_link}')
 
 
+idk better
+import re
+import bs4
+import lxml
+import requests
+x=0
+bigname=None
+bigprice=None
+smallname=None
+smallprice=None
+for _ in range(20):
+    x=x+1
+    results = requests.get(f'https://books.toscrape.com/catalogue/page-{x}.html')
+    ob=bs4.BeautifulSoup(results.text,'lxml')
+    for n in range(len(ob.find_all(class_='price_color'))):
+        price=re.findall(r'\d+.\d+',ob.find_all(class_='price_color')[n].get_text())
+        name=ob.find_all('h3')[n].get_text()
+        if bigname is None and smallname is None:
+            bigname=name
+            smallname=name
+            bigprice=price
+            smallprice=price
+        if bigprice<=price:
+            bigprice = price
+            bigname = name
+        if smallprice>=price:
+            smallname=name
+            smallprice=price
 
+
+
+
+print(f"the most expensive book is {bigname} and it was {bigprice}")
+print(f"the cheapest book was {smallname} and it was {smallprice}")
 
 
