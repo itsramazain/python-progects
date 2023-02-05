@@ -1,0 +1,6 @@
+from PIL import Image
+pic=Image.open('c:\\Users\\sawa\\Desktop\\sub.png')
+newpic=pic.resize((50,50))
+newpic.save('c:\\Users\\sawa\\Desktop\\sub.png')
+newpic.show()
+##you just change the path and the size!!
