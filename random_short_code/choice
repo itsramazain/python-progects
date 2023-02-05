@@ -1,0 +1,10 @@
+from tkinter import *
+food=['pizza','hamburgeer','hotdog']
+window=Tk()
+x=StringVar()
+def choice():
+    print(f"the plyer chose {x.get()}")
+for value in range(len(food)):
+    radiob=Radiobutton(window,variable=x,value=food[value],text=food[value],command=choice,indicatoron=0,width=100)
+    radiob.pack()
+window.mainloop()
