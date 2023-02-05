@@ -1,0 +1,30 @@
+from tkinter import *
+
+
+window1=Tk()
+window1.title('tekboom')
+window1.config(background='red')
+count=0
+def clicked():
+    global count
+    count=count+1
+    print(f'clik nuber {count}')
+def submit():
+    print(f"hello {entry.get()}")
+    entry.config(state=DISABLED)
+def delete():
+    entry.delete(0,len(entry.get()))
+def backdel():
+    entry.delete(len(entry.get()) - 1, len(entry.get()))
+icon=PhotoImage(file="c:\\Users\\sawa\\Desktop\\sub.png")
+window1.iconphoto(True,icon)
+entry=Entry(window1,font=('comic sans',20,'bold'),fg='red',bg='black',show='*')
+entry.pack()
+submit=Button(window1,text='enter',command=submit)
+submit.pack(side='right')
+deleteb=Button(window1,text='delete',command=delete)
+deleteb.pack(side='right')
+deletec=Button(window1,text='backspace',command=backdel)
+deletec.pack(side='right')
+
+window1.mainloop()
