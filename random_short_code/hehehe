@@ -1,0 +1,15 @@
+from tkinter import *
+from tkinter import messagebox
+window=Tk()
+window.title('snakeeee')
+logo=PhotoImage(file="c:\\Users\\sawa\\Desktop\\logo.png")
+window.geometry('500x500')
+window.iconphoto(True,logo)
+window.config(background="#333e47")
+x=IntVar()
+def click():
+    while True:
+        messagebox.showwarning(message="what the hell did ou do")
+button=Button(window,text="download",command=click)
+button.pack()
+window.mainloop()
