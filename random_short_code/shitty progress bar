@@ -1,0 +1,38 @@
+from tkinter import *
+import time
+from tkinter import messagebox
+from tkinter import colorchooser
+from tkinter import filedialog
+from tkinter import ttk
+from tkinter.ttk import *
+window=Tk()
+window.title('snakeeee')
+
+logo=PhotoImage(file="c:\\Users\\sawa\\Desktop\\logo.png")
+window.geometry('500x500')
+window.iconphoto(True,logo)
+window.config(background='#d46d66')
+def downloading():
+    button.config(text="downloading")
+    tasks=10
+    x=0
+    while x<tasks:
+        bar['value']+=10
+        x+=1
+        y.set(str(int((x/tasks)*100))+'%')
+        z.set(str(str(x)+'/'+str(tasks)))
+        window.update_idletasks()
+        time.sleep(1)
+
+bar=Progressbar(window,orient=HORIZONTAL,length=300)
+bar.pack(pady=10)
+y=StringVar()
+z=StringVar()
+done=Label(window,textvariable=y)
+done.pack()
+done2=Label(window,textvariable=z)
+done2.pack()
+button=Button(window,text='download',command=downloading)
+
+button.pack()
+window.mainloop()
