@@ -1,0 +1,33 @@
+#is it gonna hit the corner
+from time import *
+import time
+from tkinter import *
+window=Tk()
+xvelocity=10
+yvelocity=10
+ufophotoimage=PhotoImage(file='c:\\Users\\sawa\\Desktop\\ufo.png')
+background=PhotoImage(file='c:\\Users\\sawa\\Desktop\\cut.png')
+canvas=Canvas(window,width=500,height=500)
+canvas.create_image(0,0,image=background,anchor=NW)
+ufo=canvas.create_image(0,0,image=ufophotoimage,anchor=NW)
+canvas.pack()
+print(canvas.winfo_height)
+print(ufophotoimage.width())
+while True:
+    coordiantes=canvas.coords(ufo)#topright corner
+
+    if coordiantes[0]>=500-ufophotoimage.width() or coordiantes[0]<0:
+        xvelocity=-xvelocity
+    if coordiantes[1]>=500-ufophotoimage.height() or coordiantes[1]<0:
+        yvelocity=-yvelocity
+    canvas.move(ufo, xvelocity, yvelocity)
+    window.update()
+    time.sleep(0.01)
+    print(coordiantes)
+
+
+
+
+window.mainloop()
+
+
