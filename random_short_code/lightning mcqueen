@@ -1,0 +1,27 @@
+from tkinter import *
+def moveup(event):
+    canvas.move(car,0,-10)
+def movedown(event):
+    canvas.move(car,0,10)
+def moveright(event):
+    canvas.move(car,10,0)
+def moveleft(event):
+    canvas.move(car,-10,0)
+
+window=Tk()
+window.title('snakeeee')
+carimge=PhotoImage(file='c:\\Users\\sawa\\Desktop\\car.png')
+logo=PhotoImage(file="c:\\Users\\sawa\\Desktop\\logo.png")
+window.geometry('500x500')
+window.iconphoto(True,logo)
+
+canvas=Canvas(window,width=500,height=500)
+car=canvas.create_image(0,0,image=carimge,anchor=NW)
+window.bind('<w>',moveup)
+window.bind('<s>',movedown)
+window.bind('<a>',moveleft)
+window.bind('<d>',moveright)
+canvas.pack()
+
+
+window.mainloop()
