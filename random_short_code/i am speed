@@ -1,0 +1,33 @@
+# change the velocity to make it normal
+from tkinter import *
+velocity=10000#10 would be fine its just funny how it just goes vroooooooooooooom out of exisistence 
+def moveup(event):
+    car.place(x=car.winfo_x(),y=car.winfo_y()-velocity)
+def movedown(event):
+    car.place(x=car.winfo_x(),y=car.winfo_y()+velocity)
+def moveleft(event):
+    car.place(x=car.winfo_x()-velocity, y=car.winfo_y() )
+def moveright(event):
+    car.place(x=car.winfo_x()+velocity, y=car.winfo_y() )
+
+window=Tk()
+window.title('snakeeee')
+carimge=PhotoImage(file='c:\\Users\\sawa\\Desktop\\car.png')
+logo=PhotoImage(file="c:\\Users\\sawa\\Desktop\\logo.png")
+window.geometry('500x500')
+window.iconphoto(True,logo)
+car=Label(window,image=carimge)
+window.bind('<w>',moveup)
+window.bind('<Up>',moveup)
+window.bind('<s>',movedown)
+window.bind('<Down>',movedown)
+window.bind('<a>',moveleft)
+window.bind('<Left>',moveleft)
+window.bind('<d>',moveright)
+window.bind('<Right>',moveright)
+car.place(x=0,y=0)
+
+
+
+window.mainloop()
+
