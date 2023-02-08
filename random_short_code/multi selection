@@ -1,0 +1,43 @@
+from tkinter import *
+import time
+from tkinter import messagebox
+from tkinter import colorchooser
+from tkinter import filedialog
+from tkinter import ttk
+from tkinter.ttk import *
+window=Tk()
+window.title('snakeeee')
+
+logo=PhotoImage(file="c:\\Users\\sawa\\Desktop\\logo.png")
+window.geometry('500x500')
+window.iconphoto(True,logo)
+window.config(background='#d46d66')
+choice=IntVar()
+def submit():
+    print('you orderd')
+    for index in listbox.curselection():
+        print(listbox.get(index))
+def delete():
+    for index in reversed(listbox.curselection()):
+        listbox.delete(index)
+    listbox.config(height=listbox.size())
+def add():
+    added=entry.get()
+    listbox.insert(listbox.size(),added)
+    listbox.config(height=listbox.size())
+listbox=Listbox(window,selectmode=MULTIPLE)
+listbox.insert(1,'pizza')
+listbox.insert(2,'hamb')
+listbox.insert(3,'hot dog')
+listbox.insert(4,'spagetti')
+listbox.config(height=listbox.size())
+listbox.pack()
+submitbutton=Button(window,text="submit",command=submit)
+submitbutton.pack()
+button1=Button(window,text="delete",command=delete)
+button1.pack()
+entry=Entry(window,)
+entry.pack()
+submit2=Button(window,text="add",command=add)
+submit2.pack()
+window.mainloop()
