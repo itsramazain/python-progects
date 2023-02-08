@@ -1,0 +1,31 @@
+class Ball():
+    def __init__(self,canvas,color,topleftx,toplefty,diamter,xvelcity,yvelcity):
+        self.canvas=canvas
+        self.xvelocity=xvelcity
+        self.yvelocity = yvelcity
+        self.ball=self.canvas.create_oval(toplefty,topleftx,diamter,diamter,fill=color)
+    def movee(self):
+        coor=self.canvas.coords(self.ball)
+        if int(coor[2])>=int(self.canvas['width']) or int(coor[0])<0:
+            self.xvelocity=-self.xvelocity
+        if int(coor[3])>=int(self.canvas['height']) or coor[1]<0:
+            self.yvelocity=-self.yvelocity
+
+        self.canvas.move(self.ball,self.xvelocity,self.yvelocity)
+
+from time import *
+from tkinter import *
+import time
+window=Tk()
+canvas=Canvas(window,width=500,height=500)
+canvas.pack()
+tennis=Ball(canvas,'white',0,0,100,10,10)
+basket=Ball(canvas,'yellow',10,11,50,20,20)
+nba=Ball(canvas,'orange',50,50,300,1,10)
+while True:
+    tennis.movee()
+    basket.movee()
+    nba.movee()
+    window.update()
+    time.sleep(0.01)
+window.mainloop()
