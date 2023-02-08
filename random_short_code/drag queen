@@ -1,0 +1,28 @@
+from tkinter import *
+
+
+window=Tk()
+window.title('snakeeee')
+
+logo=PhotoImage(file="c:\\Users\\sawa\\Desktop\\logo.png")
+window.geometry('500x500')
+window.iconphoto(True,logo)
+window.config(background='#d46d66')
+canvas=Canvas(window,width=1000,height=1000)
+def drag(event):
+    square.startx=event.x
+    square.starty=event.y
+def dragmo(event):
+    newx=square.winfo_x()-square.startx+event.x
+    newy=square.winfo_y()-square.starty+event.y
+    square.place(x=newx,y=newy)
+square=Label(window,width=20,background='blue',height=5,text='i love swag',font=('comic sans',30))
+
+square.pack()
+square.bind('<Button-1>',drag)
+square.bind('<B1-Motion>',dragmo)
+
+
+
+window.mainloop()
+
