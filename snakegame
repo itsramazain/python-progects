@@ -1,0 +1,56 @@
+from tkinter import *
+WIDGITSIZE=40
+snakeparts=[]
+eaten=False
+def move(canvas,createpart):
+    global  snakeparts
+    createpart()
+    if not eaten:
+        canvas.delete(snakeparts[-2])
+    window.update()
+    window.after(100,move,canvas,createpart)
+
+class Snake():
+    def __init__(self,canvas,topx,topy,bottomx,bottomy):
+        self.canvas=canvas
+        self.topx=topx
+        self.topy=topy
+        self.bottomx=bottomx
+        self.bottomy=bottomy
+        self.head=self.canvas.create_rectangle(self.topx, self.topy, self.bottomx,self.bottomy, fill='green')
+        snakeparts.append(self.head)
+    def createpart(self):
+        global snakeparts
+        newpart=self.canvas.create_rectangle(self.topx, self.topy, self.bottomx,self.bottomy, fill='green')
+        snakeparts.append(newpart)
+    def movedown(self,event):
+        self.topy += 40
+        self.bottomy += 40
+        move(self.canvas, self.createpart)
+    def moveup(self,event):
+        self.topy -= 40
+        self.bottomy -= 40
+        move(self.canvas, self.createpart)
+    def moveright(self,event):
+        self.topx += 40
+        self.bottomx += 40
+        move(self.canvas, self.createpart)
+
+    def moveleft(self,event):
+        self.topx -= 40
+        self.bottomx -= 40
+        move(self.canvas, self.createpart)
+
+window=Tk()
+window.geometry('520x520')
+window.config(background='black')
+window.resizable(False,False)
+canvas=Canvas(window,width=520,height=520,bg='black')
+gamesnake=Snake(canvas,0,0,40,40)
+window.bind('<Down>',gamesnake.movedown)
+window.bind('<Up>',gamesnake.moveup)
+window.bind('<Right>',gamesnake.moveright)
+window.bind('<Left>',gamesnake.moveleft)
+canvas.pack()
+
+window.mainloop()
