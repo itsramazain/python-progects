@@ -1,0 +1,151 @@
+import random
+class Ball():
+    def __init__(self,canvas):
+        self.canvas=canvas
+        self.topx=random.randint(0,450)
+        self.topy=random.randint(0,450)
+        self.diamter=1
+        self.ball=self.canvas.create_oval(self.topx,self.topy,self.topx+14,self.topy+14,fill='red')
+        self.center=((self.topx+7),(self.topy-7))
+    def deletball(self):
+        self.canvas.delete(self.ball)
+class Snakepeice():
+    def __init__(self,canvas,topx,topy,bottomx,bottomy):
+        self.canvas=canvas
+        self.topx=topx
+        self.topy=topy
+        self.bottomx=bottomx
+        self.bottomy=bottomy
+        self.image=self.canvas.create_rectangle(self.topx,self.topy,self.bottomx,self.bottomy,fill='green')
+click=None
+from tkinter import *
+import time
+gamewindow=Tk()
+gamewindow.geometry('500x500')
+
+windowwidth=500
+windowheight=500
+snakearea=Canvas(gamewindow,width=500,height=500,bg='black')
+snakearea.pack()
+widthofgamearea=snakearea['width']
+heightofgamearea=snakearea['height']
+xvelocity=1
+yvelocity=0
+ball=Ball(snakearea)
+snake=snakearea.create_rectangle(10,10,30,30,fill='green')
+def moveup(event):
+    global click
+    click='up'
+    global xvelocity
+    global yvelocity
+    #print(f"{click}  at  {snakearea.coords(snake)}")
+    yvelocity=-1
+    xvelocity=0
+def movedown(event):
+    global click
+    click = 'down'
+    #print(f"{click}  at  {snakearea.coords(snake)}")
+    global xvelocity
+    global yvelocity
+    xvelocity=0
+    yvelocity= 1
+def moveright(event):
+    global click
+    click = 'right'
+    #print(f"{click}  at  {snakearea.coords(snake)}")
+    global xvelocity
+    global yvelocity
+    xvelocity= 1
+    yvelocity= 0
+def moveleft(event):
+    global click
+    click = 'left'
+    #print(f"{click}  at  {snakearea.coords(snake)}")
+    global xvelocity
+    global yvelocity
+    xvelocity= -1
+    yvelocity=0
+def loserwindow():
+    #print(f"{click}  at  {snakearea.coords(snake)}")
+    newwindow=Tk()
+    Label(newwindow,text="game over",font=('comic sans',50)).pack()
+    gamewindow.destroy()
+    newwindow.mainloop()
+
+gamewindow.bind('<Up>',moveup)
+gamewindow.bind('<Down>',movedown)
+gamewindow.bind('<Right>',moveright)
+gamewindow.bind('<Left>',moveleft)
+def touch():
+    nowcords=snakearea.coords(snake)
+    if int(nowcords[0])<0 or int(nowcords[2])>int(snakearea['width'])-1:
+        loserwindow()
+    if int(nowcords[1])<0 or int(nowcords[3])>int(snakearea['height'])-1:
+        loserwindow()
+
+newpicetopx=None
+newpicetopy=None
+newpicebottomx=None
+newpicebottomy=None
+
+eaten=False
+balleaten=0
+while True:
+    ballcnx = int(ball.center[0])
+    ballcny = int(ball.center[1])
+    topxnow=int(snakearea.coords(snake)[0])-10
+    topynow=int(snakearea.coords(snake)[1])-10
+    bottomxnow = int(snakearea.coords(snake)[2])
+    bottomynow = int(snakearea.coords(snake)[3])
+    #print(f"ball at {ballcnx,ballcny}")
+    #print(f'snake at {topxnow,topynow,bottomxnow,bottomynow}')
+    if eaten:
+        ball.deletball()
+        ball=Ball(snakearea)
+        eaten=False
+        balleaten=balleaten+1
+        if click=='right':
+            newpicetopx=topxnow-20
+            newpicetopy=topynow
+            newpicebottomx=bottomxnow-20
+            newpicebottomy=bottomxnow
+        if click=='left':
+            newpicetopx=topxnow+20
+            newpicetopy=topynow
+            newpicebottomx=bottomxnow+20
+            newpicebottomy=bottomxnow
+        if click=='up':
+            newpicetopx=topxnow
+            newpicetopy=topynow+20
+            newpicebottomx=bottomxnow
+            newpicebottomy=bottomxnow+20
+        if click=='down':
+            newpicetopx=topxnow
+            newpicetopy=topynow-20
+            newpicebottomx=bottomxnow
+            newpicebottomy=bottomxnow-20
+        newpiece=Snakepeice(snakearea,newpicetopx,newpicetopy,newpicebottomx,newpicebottomy)
+    if ballcnx in range(topxnow,bottomxnow+1) and ballcny in range(topynow ,bottomynow+1):
+        eaten = True
+        print(click)
+
+
+
+
+
+    touch()
+    time.sleep(0.01)
+    snakearea.move(snake,xvelocity,yvelocity)
+    gamewindow.update()
+
+
+
+
+
+
+
+
+
+
+
+gamewindow.mainloop()
