@@ -1,0 +1,746 @@
+import pygame
+import sys
+pygame.init()
+#the grid in 400*600 each square is 20 ,30 row,20 col
+screen = pygame.display.set_mode((400, 600))
+
+
+clock = pygame.time.Clock()
+#each cell has a number
+row1=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+row2=[21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
+row3=[41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+row4=[61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]
+row5=[81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
+row6=[101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120]
+row7=[121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140]
+row8=[141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160]
+row9=[161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180]
+row10=[181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200]
+row11=[201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220]
+row12=[221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240]
+row13=[241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260]
+row14=[261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280]
+row15=[281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300]
+row16=[301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320]
+row17=[321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340]
+row18=[341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360]
+row19=[361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380]
+row20=[381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400]
+row21=[401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420]
+row22=[421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440]
+row23=[441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460]
+row24=[461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480]
+row25=[481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500]
+row26=[501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520]
+row27=[521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540]
+row28=[541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560]
+row29=[561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 578, 579, 580]
+row30=[581, 582, 583, 584, 585, 586, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 598, 599, 600]
+row1toplefts={1: [0, 0], 2: [20, 0], 3: [40, 0], 4: [60, 0],
+              5: [80, 0], 6: [100, 0], 7: [120, 0], 8: [140, 0], 9: [160, 0],
+              10: [180, 0], 11: [200, 0], 12: [220, 0], 13: [240, 0], 14: [260, 0], 15: [280, 0], 16: [300, 0],
+              17: [320, 0], 18: [340, 0], 19: [360, 0], 20: [380, 0]}
+
+
+row2toplefts={1: [0, 20], 2: [20, 20], 3: [40, 20], 4: [60, 20], 5: [80, 20], 6: [100, 20],
+              7: [120, 20], 8: [140, 20], 9: [160, 20], 10: [180, 20], 11: [200, 20], 12: [220, 20],
+              13: [240, 20], 14: [260, 20], 15: [280, 20], 16: [300, 20],
+              17: [320, 20], 18: [340, 20], 19: [360, 20], 20: [380, 20]}
+
+row3toplefts={1: [0, 40], 2: [20, 40], 3: [40, 40], 4: [60, 40], 5: [80, 40], 6: [100, 40],
+              7: [120, 40], 8: [140, 40], 9: [160, 40], 10: [180, 40], 11: [200, 40], 12: [220, 40],
+              13: [240, 40], 14: [260, 40], 15: [280, 40],
+              16: [300, 40], 17: [320, 40], 18: [340, 40], 19: [360, 40], 20: [380, 40]}
+
+row4toplefts={1: [0, 60], 2: [20, 60], 3: [40, 60], 4: [60, 60], 5: [80, 60], 6: [100, 60], 7: [120, 60],
+              8: [140, 60], 9: [160, 60], 10: [180, 60], 11: [200, 60], 12: [220, 60], 13: [240, 60],
+              14: [260, 60], 15: [280, 60], 16: [300, 60], 17: [320, 60], 18: [340, 60],
+              19: [360, 60], 20: [380, 60]}
+
+row5toplefts={1: [0, 80], 2: [20, 80], 3: [40, 80], 4: [60, 80], 5: [80, 80], 6: [100, 80],
+              7: [120, 80], 8: [140, 80], 9: [160, 80], 10: [180, 80], 11: [200, 80], 12: [220, 80],
+              13: [240, 80], 14: [260, 80], 15: [280, 80], 16: [300, 80],
+              17: [320, 80], 18: [340, 80], 19: [360, 80], 20: [380, 80]}
+
+row6toplefts={1: [0, 100], 2: [20, 100], 3: [40, 100], 4: [60, 100], 5: [80, 100],
+              6: [100, 100], 7: [120, 100], 8: [140, 100], 9: [160, 100], 10: [180, 100],
+              11: [200, 100], 12: [220, 100], 13: [240, 100], 14: [260, 100], 15: [280, 100], 16: [300, 100], 17: [320, 100],
+              18: [340, 100], 19: [360, 100], 20: [380, 100]}
+
+row7toplefts={1: [0, 120], 2: [20, 120], 3: [40, 120], 4: [60, 120], 5: [80, 120], 6: [100, 120], 7: [120, 120],
+              8: [140, 120], 9: [160, 120], 10: [180, 120], 11: [200, 120], 12: [220, 120], 13: [240, 120],
+              14: [260, 120], 15: [280, 120], 16: [300, 120], 17: [320, 120],
+              18: [340, 120], 19: [360, 120], 20: [380, 120]}
+#fuck 2d arrs dictionaries all the way
+row8toplefts={1: [0, 140], 2: [20, 140], 3: [40, 140], 4: [60, 140], 5: [80, 140], 6: [100, 140],
+              7: [120, 140], 8: [140, 140], 9: [160, 140], 10: [180, 140], 11: [200, 140], 12: [220, 140],
+              13: [240, 140], 14: [260, 140], 15: [280, 140],
+              16: [300, 140], 17: [320, 140], 18: [340, 140], 19: [360, 140], 20: [380, 140]}
+
+
+row9toplefts={1: [0, 160], 2: [20, 160], 3: [40, 160], 4: [60, 160],
+              5: [80, 160], 6: [100, 160], 7: [120, 160], 8: [140, 160],
+              9: [160, 160], 10: [180, 160], 11: [200, 160], 12: [220, 160],
+              13: [240, 160], 14: [260, 160], 15: [280, 160], 16: [300, 160],
+              17: [320, 160], 18: [340, 160], 19: [360, 160], 20: [380, 160]}
+
+
+row10toplefts={1: [0, 180], 2: [20, 180], 3: [40, 180], 4: [60, 180], 5: [80, 180], 6: [100, 180], 7: [120, 180],
+               8: [140, 180], 9: [160, 180], 10: [180, 180], 11: [200, 180], 12: [220, 180], 13: [240, 180],
+               14: [260, 180], 15: [280, 180], 16: [300, 180],
+               17: [320, 180], 18: [340, 180], 19: [360, 180], 20: [380, 180]}
+
+
+row11toplefts={1: [0, 200], 2: [20, 200], 3: [40, 200], 4: [60, 200], 5: [80, 200], 6: [100, 200], 7: [120, 200],
+               8: [140, 200], 9: [160, 200], 10: [180, 200], 11: [200, 200], 12: [220, 200], 13: [240, 200],
+               14: [260, 200], 15: [280, 200], 16: [300, 200],
+               17: [320, 200], 18: [340, 200], 19: [360, 200], 20: [380, 200]}
+
+
+
+
+
+row12toplefts={1: [0, 220], 2: [20, 220], 3: [40, 220], 4: [60, 220], 5: [80, 220], 6: [100, 220],
+               7: [120, 220], 8: [140, 220], 9: [160, 220], 10: [180, 220], 11: [200, 220],
+               12: [220, 220], 13: [240, 220], 14: [260, 220], 15: [280, 220], 16: [300, 220],
+               17: [320, 220], 18: [340, 220], 19: [360, 220], 20: [380, 220]}
+
+
+row13toplefts={1: [0, 240], 2: [20, 240], 3: [40, 240], 4: [60, 240], 5: [80, 240], 6: [100, 240], 7: [120, 240],
+               8: [140, 240], 9: [160, 240], 10: [180, 240], 11: [200, 240], 12: [220, 240], 13: [240, 240],
+               14: [260, 240], 15: [280, 240], 16: [300, 240],
+               17: [320, 240], 18: [340, 240], 19: [360, 240], 20: [380, 240]}
+
+
+row14toplefts={1: [0, 260], 2: [20, 260], 3: [40, 260], 4: [60, 260], 5: [80, 260], 6: [100, 260],
+               7: [120, 260], 8: [140, 260], 9: [160, 260], 10: [180, 260], 11: [200, 260], 12: [220, 260],
+               13: [240, 260], 14: [260, 260], 15: [280, 260], 16: [300, 260],
+               17: [320, 260], 18: [340, 260], 19: [360, 260], 20: [380, 260]}
+
+
+
+row15toplefts={1: [0, 280], 2: [20, 280], 3: [40, 280], 4: [60, 280], 5: [80, 280], 6: [100, 280],
+               7: [120, 280], 8: [140, 280], 9: [160, 280], 10: [180, 280], 11: [200, 280], 12: [220, 280],
+               13: [240, 280], 14: [260, 280], 15: [280, 280],
+               16: [300, 280], 17: [320, 280], 18: [340, 280], 19: [360, 280], 20: [380, 280]}
+
+
+row16toplefts={1: [0, 300], 2: [20, 300], 3: [40, 300], 4: [60, 300], 5: [80, 300], 6: [100, 300], 7: [120, 300],
+               8: [140, 300], 9: [160, 300], 10: [180, 300], 11: [200, 300], 12: [220, 300], 13: [240, 300],
+               14: [260, 300], 15: [280, 300],
+               16: [300, 300], 17: [320, 300], 18: [340, 300], 19: [360, 300], 20: [380, 300]}
+
+
+row17toplefts={1: [0, 320], 2: [20, 320], 3: [40, 320], 4: [60, 320], 5: [80, 320], 6: [100, 320], 7: [120, 320],
+               8: [140, 320], 9: [160, 320], 10: [180, 320], 11: [200, 320], 12: [220, 320], 13: [240, 320], 14: [260, 320],
+               15: [280, 320], 16: [300, 320], 17: [320, 320], 18: [340, 320], 19: [360, 320], 20: [380, 320]}
+
+
+
+row18toplefts={1: [0, 340], 2: [20, 340], 3: [40, 340], 4: [60, 340], 5: [80, 340], 6: [100, 340], 7: [120, 340],
+               8: [140, 340], 9: [160, 340], 10: [180, 340], 11: [200, 340], 12: [220, 340], 13: [240, 340], 14: [260, 340],
+               15: [280, 340], 16: [300, 340], 17: [320, 340], 18: [340, 340],
+               19: [360, 340], 20: [380, 340]}
+
+
+row19toplefts={1: [0, 360], 2: [20, 360], 3: [40, 360], 4: [60, 360], 5: [80, 360], 6: [100, 360],
+               7: [120, 360], 8: [140, 360], 9: [160, 360], 10: [180, 360], 11: [200, 360], 12: [220, 360],
+               13: [240, 360], 14: [260, 360], 15: [280, 360], 16: [300, 360],
+               17: [320, 360], 18: [340, 360], 19: [360, 360], 20: [380, 360]}
+
+
+row20toplefts={1: [0, 380], 2: [20, 380], 3: [40, 380], 4: [60, 380], 5: [80, 380], 6: [100, 380], 7: [120, 380],
+               8: [140, 380], 9: [160, 380], 10: [180, 380], 11: [200, 380], 12: [220, 380], 13: [240, 380], 14: [260, 380],
+               15: [280, 380], 16: [300, 380], 17: [320, 380], 18: [340, 380], 19: [360, 380], 20: [380, 380]}
+
+
+
+row21toplefts={1: [0, 400], 2: [20, 400], 3: [40, 400], 4: [60, 400], 5: [80, 400], 6: [100, 400],
+               7: [120, 400], 8: [140, 400], 9: [160, 400], 10: [180, 400], 11: [200, 400], 12: [220, 400],
+               13: [240, 400], 14: [260, 400],
+               15: [280, 400], 16: [300, 400], 17: [320, 400], 18: [340, 400], 19: [360, 400], 20: [380, 400]}
+
+
+
+row22toplefts={1: [0, 420], 2: [20, 420], 3: [40, 420], 4: [60, 420], 5: [80, 420], 6: [100, 420], 7: [120, 420],
+               8: [140, 420], 9: [160, 420], 10: [180, 420], 11: [200, 420], 12: [220, 420], 13: [240, 420], 14: [260, 420],
+               15: [280, 420], 16: [300, 420], 17: [320, 420], 18: [340, 420], 19: [360, 420], 20: [380, 420]}
+
+
+
+row23toplefts={1: [0, 440], 2: [20, 440], 3: [40, 440], 4: [60, 440], 5: [80, 440], 6: [100, 440],
+               7: [120, 440], 8: [140, 440], 9: [160, 440], 10: [180, 440], 11: [200, 440], 12: [220, 440],
+               13: [240, 440], 14: [260, 440], 15: [280, 440],
+               16: [300, 440], 17: [320, 440], 18: [340, 440], 19: [360, 440], 20: [380, 440]}
+
+
+row24toplefts={1: [0, 460], 2: [20, 460], 3: [40, 460], 4: [60, 460], 5: [80, 460], 6: [100, 460],
+               7: [120, 460], 8: [140, 460], 9: [160, 460], 10: [180, 460], 11: [200, 460], 12: [220, 460],
+               13: [240, 460], 14: [260, 460],
+               15: [280, 460], 16: [300, 460], 17: [320, 460], 18: [340, 460], 19: [360, 460], 20: [380, 460]}
+
+
+row25toplefts={1: [0, 480], 2: [20, 480], 3: [40, 480], 4: [60, 480], 5: [80, 480], 6: [100, 480], 7: [120, 480],
+               8: [140, 480], 9: [160, 480], 10: [180, 480], 11: [200, 480], 12: [220, 480], 13: [240, 480], 14: [260, 480],
+               15: [280, 480], 16: [300, 480], 17: [320, 480], 18: [340, 480], 19: [360, 480], 20: [380, 480]}
+
+
+row26toplefts={1: [0, 500], 2: [20, 500], 3: [40, 500], 4: [60, 500], 5: [80, 500], 6: [100, 500],
+               7: [120, 500], 8: [140, 500], 9: [160, 500], 10: [180, 500], 11: [200, 500], 12: [220, 500],
+               13: [240, 500], 14: [260, 500], 15: [280, 500], 16: [300, 500], 17: [320, 500],
+               18: [340, 500], 19: [360, 500], 20: [380, 500]}
+
+
+row27toplefts={1: [0, 520], 2: [20, 520], 3: [40, 520], 4: [60, 520], 5: [80, 520], 6: [100, 520], 7: [120, 520],
+               8: [140, 520], 9: [160, 520], 10: [180, 520], 11: [200, 520], 12: [220, 520], 13: [240, 520], 14: [260, 520],
+               15: [280, 520], 16: [300, 520], 17: [320, 520], 18: [340, 520], 19: [360, 520], 20: [380, 520]}
+
+
+row28toplefts={1: [0, 540], 2: [20, 540], 3: [40, 540], 4: [60, 540], 5: [80, 540], 6: [100, 540], 7: [120, 540],
+               8: [140, 540], 9: [160, 540], 10: [180, 540], 11: [200, 540], 12: [220, 540], 13: [240, 540],
+               14: [260, 540], 15: [280, 540], 16: [300, 540],
+               17: [320, 540], 18: [340, 540], 19: [360, 540], 20: [380, 540]}
+
+
+row29toplefts={1: [0, 560], 2: [20, 560], 3: [40, 560], 4: [60, 560], 5: [80, 560], 6: [100, 560],
+               7: [120, 560], 8: [140, 560], 9: [160, 560], 10: [180, 560], 11: [200, 560], 12: [220, 560],
+               13: [240, 560], 14: [260, 560], 15: [280, 560],
+               16: [300, 560], 17: [320, 560], 18: [340, 560], 19: [360, 560], 20: [380, 560]}
+row30toplefts={1: [0, 580], 2: [20, 580], 3: [40, 580], 4: [60, 580], 5: [80, 580], 6: [100, 580], 7: [120, 580], 8: [140, 580],
+               9: [160, 580], 10: [180, 580], 11: [200, 580], 12: [220, 580], 13: [240, 580], 14: [260, 580], 15: [280, 580],
+               16: [300, 580], 17: [320, 580], 18: [340, 580], 19: [360, 580], 20: [380, 580]}
+#didnt do anyof these amually it aws a long for loop for each dictionary but i like to have everything writt
+
+class Grid():
+    def __init__(self):
+        self.col=20
+        self.row=30
+        self.width=400
+        self.height=600
+        self.space_width=20
+        self.space_height=20
+        self.rows=[row1toplefts, row2toplefts, row3toplefts, row4toplefts, row5toplefts, row6toplefts,
+                       row7toplefts, row8toplefts, row9toplefts, row10toplefts, row11toplefts, row12toplefts,
+                       row13toplefts, row14toplefts, row15toplefts, row16toplefts, row17toplefts, row18toplefts,
+                       row19toplefts, row20toplefts, row21toplefts, row22toplefts, row23toplefts, row24toplefts,
+                       row25toplefts, row26toplefts, row27toplefts, row28toplefts, row29toplefts, row30toplefts]
+    def draw(self):
+        for row in self.rows:
+            for cellnum,cord in row.items():
+                cell_rect=pygame.Rect(cord[0],cord[1],20,20)
+                cell=pygame.draw.rect(screen,'#7A7A7A',cell_rect,1)
+
+grid=Grid()
+class Square():
+    def __init__(self,topleftx,toplefty):
+        self.topleftx=topleftx
+        self.toplefty=toplefty
+        self.image=pygame.Surface((20,20))
+        self.image.fill('#7A7A7A')
+        self.rect = self.image.get_rect(topleft=(self.topleftx,self.toplefty))
+    def showsq(self):
+        screen.blit(self.image,self.rect)
+square=pygame.sprite.Group()
+
+shapes=['S'#2 shapes
+    , 'Z'#2shapes
+    , 'I'#has 2 shapes
+    , 'O'#1 shape
+    ,'J'#4 shapes
+    ,'L'#4 shapes
+    , 'T'#4 shapes
+ ]
+
+
+
+
+
+
+
+L = [['.....',
+      '...0.',
+      '.000.',
+      '.....',
+      '.....'],
+     ['.....',
+      '..0..',
+      '..0..',
+      '..00.',
+      '.....'],
+     ['.....',
+      '.....',
+      '.000.',
+      '.0...',
+      '.....'],
+     ['.....',
+      '.00..',
+      '..0..',
+      '..0..',
+      '.....']]
+
+T = [['.....',
+      '..0..',
+      '.000.',
+      '.....',
+      '.....'],
+     ['.....',
+      '..0..',
+      '..00.',
+      '..0..',
+      '.....'],
+     ['.....',
+      '.....',
+      '.000.',
+      '..0..',
+      '.....'],
+     ['.....',
+      '..0..',
+      '.00..',
+      '..0..',
+      '.....']]
+n=0
+m=0
+numberof_roate=0
+class Z():#0=rotation1,1=rotation2
+
+
+    def __init__(self):
+        self.first_sqauare_cords=grid.rows[0][9]
+        self.second_sqauare_cords=grid.rows[0][10]
+        self.third_sqauare_cords=grid.rows[1][10]
+        self.fourth_sqauare_cords = grid.rows[1][11]
+        self.cords=[[160, 0], [180, 0], [180, 20], [200, 20]]
+    def show(self):
+        for toplefts in self.cords:
+            print(self.cords)
+            sq=Square(toplefts[0],toplefts[1])
+            sq.showsq()
+    def movedown(self):
+        if not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520):
+            self.first_sqauare_cords[1] +=40
+            self.second_sqauare_cords[1] +=40
+            self.third_sqauare_cords[1] +=40
+            self.fourth_sqauare_cords[1] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def rotate(self):
+        global numberof_roate
+        Z = [['.....',
+              '.....',
+              '.00..',
+              '..00.',
+              '.....'],
+             ['.....',
+              '..0..',
+              '.00..',
+              '.0...',
+              '.....']]
+        if numberof_roate%2!=0:
+            self.cords.clear()
+            self.third_sqauare_cords[0] -= 20
+            self.fourth_sqauare_cords[0]-=20
+            self.fourth_sqauare_cords[1] -= 40
+            self.cords=[self.first_sqauare_cords,self.second_sqauare_cords,self.third_sqauare_cords,self.fourth_sqauare_cords]
+        else:
+            self.cords.clear()
+            self.third_sqauare_cords[0] += 20
+            self.fourth_sqauare_cords[0] += 20
+            self.fourth_sqauare_cords[1] += 40
+            self.cords = [self.first_sqauare_cords, self.second_sqauare_cords, self.third_sqauare_cords,
+                          self.fourth_sqauare_cords]
+    def moveright(self):
+        if (not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520)) and ( not (self.first_sqauare_cords[0] >=340) or not self.second_sqauare_cords[0] >= 340 or not (self.third_sqauare_cords[
+            0] >= 340 )or not (self.fourth_sqauare_cords[0] >= 340)):
+
+            self.first_sqauare_cords[0] +=40
+            self.second_sqauare_cords[0] +=40
+            self.third_sqauare_cords[0] +=40
+            self.fourth_sqauare_cords[0] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def moveleft(self):
+        if (not (self.first_sqauare_cords[1] > 520) or not self.second_sqauare_cords[1] > 520 or not (
+                self.third_sqauare_cords[
+                    1] > 520) or not (self.fourth_sqauare_cords[1] > 520)) and (
+                not (self.first_sqauare_cords[0] <=40) or not self.second_sqauare_cords[0] <=40 or not (
+                self.third_sqauare_cords[
+                    0] <=40) or not (self.fourth_sqauare_cords[0] <=40)):
+            self.first_sqauare_cords[0] -=40
+            self.second_sqauare_cords[0] -=40
+            self.third_sqauare_cords[0] -=40
+            self.fourth_sqauare_cords[0] -=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+droptimer=pygame.USEREVENT+1
+pygame.time.set_timer(droptimer,400)
+class S():#0=rotation1,1=rotation2
+    s= [['.....',
+          '......',
+          '..00..',
+          '.00...',
+          '.....'],
+         ['.....',
+          '..0..',
+          '..00.',
+          '...0.',
+          '.....']]
+    def __init__(self):
+        self.first_sqauare_cords=grid.rows[1][9]
+        self.second_sqauare_cords=grid.rows[1][10]
+        self.third_sqauare_cords=grid.rows[0][10]
+        self.fourth_sqauare_cords = grid.rows[0][11]
+        self.cords=[[180, 0],[200, 0],[200, 20],[220, 20]]
+    def show(self):
+        for toplefts in self.cords:
+            print(self.cords)
+            sq=Square(toplefts[0],toplefts[1])
+            sq.showsq()
+    def movedown(self):
+        if not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520):
+            self.first_sqauare_cords[1] +=40
+            self.second_sqauare_cords[1] +=40
+            self.third_sqauare_cords[1] +=40
+            self.fourth_sqauare_cords[1] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def rotate(self):
+        global numberof_roate
+        if numberof_roate%2!=0:
+            self.cords.clear()
+            self.first_sqauare_cords[1] -= 40
+            self.fourth_sqauare_cords[0]-=40
+            self.cords=[self.first_sqauare_cords,self.second_sqauare_cords,self.third_sqauare_cords,self.fourth_sqauare_cords]
+        else:
+            self.cords.clear()
+            self.first_sqauare_cords[1] += 40
+            self.fourth_sqauare_cords[0] += 40
+            self.cords = [self.first_sqauare_cords, self.second_sqauare_cords, self.third_sqauare_cords,
+                          self.fourth_sqauare_cords]
+    def moveright(self):
+        if (not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520)) and ( not (self.first_sqauare_cords[0] >=340) or not self.second_sqauare_cords[0] >= 340 or not (self.third_sqauare_cords[
+            0] >= 340 )or not (self.fourth_sqauare_cords[0] >= 340)):
+
+            self.first_sqauare_cords[0] +=40
+            self.second_sqauare_cords[0] +=40
+            self.third_sqauare_cords[0] +=40
+            self.fourth_sqauare_cords[0] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def moveleft(self):
+        if (not (self.first_sqauare_cords[1] > 520) or not self.second_sqauare_cords[1] > 520 or not (
+                self.third_sqauare_cords[
+                    1] > 520) or not (self.fourth_sqauare_cords[1] > 520)) and (
+                not (self.first_sqauare_cords[0] <=40) or not self.second_sqauare_cords[0] <=40 or not (
+                self.third_sqauare_cords[
+                    0] <=40) or not (self.fourth_sqauare_cords[0] <=40)):
+            self.first_sqauare_cords[0] -=40
+            self.second_sqauare_cords[0] -=40
+            self.third_sqauare_cords[0] -=40
+            self.fourth_sqauare_cords[0] -=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+class O():#0=rotation1,1=rotation2
+
+    def __init__(self):
+        self.first_sqauare_cords=grid.rows[0][9]
+        self.second_sqauare_cords=grid.rows[0][10]
+        self.third_sqauare_cords=grid.rows[1][9]
+        self.fourth_sqauare_cords = grid.rows[1][10]
+        self.cords=[[160,0 ],[180, 0],[160, 20],[180, 20]]
+    def show(self):
+        for toplefts in self.cords:
+            print(self.cords)
+            sq=Square(toplefts[0],toplefts[1])
+            sq.showsq()
+    def movedown(self):
+        if not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520):
+            self.first_sqauare_cords[1] +=40
+            self.second_sqauare_cords[1] +=40
+            self.third_sqauare_cords[1] +=40
+            self.fourth_sqauare_cords[1] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def rotate(self):
+        pass
+    def moveright(self):
+        if (not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520)) and ( not (self.first_sqauare_cords[0] >=340) or not self.second_sqauare_cords[0] >= 340 or not (self.third_sqauare_cords[
+            0] >= 340 )or not (self.fourth_sqauare_cords[0] >= 340)):
+
+            self.first_sqauare_cords[0] +=40
+            self.second_sqauare_cords[0] +=40
+            self.third_sqauare_cords[0] +=40
+            self.fourth_sqauare_cords[0] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def moveleft(self):
+        if (not (self.first_sqauare_cords[1] > 520) or not self.second_sqauare_cords[1] > 520 or not (
+                self.third_sqauare_cords[
+                    1] > 520) or not (self.fourth_sqauare_cords[1] > 520)) and (
+                not (self.first_sqauare_cords[0] <=40) or not self.second_sqauare_cords[0] <=40 or not (
+                self.third_sqauare_cords[
+                    0] <=40) or not (self.fourth_sqauare_cords[0] <=40)):
+            self.first_sqauare_cords[0] -=40
+            self.second_sqauare_cords[0] -=40
+            self.third_sqauare_cords[0] -=40
+            self.fourth_sqauare_cords[0] -=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+
+class I():#0=rotation1,1=rotation2
+
+    I = [['..0..',
+          '..0..',
+          '..0..',
+          '..0..',
+          '.....'],
+         ['.....',
+          '0000.',
+          '.....',
+          '.....',
+          '.....']]
+    def __init__(self):
+        self.first_sqauare_cords=grid.rows[0][10]
+        self.second_sqauare_cords=grid.rows[1][10]
+        self.third_sqauare_cords=grid.rows[2][10]
+        self.fourth_sqauare_cords = grid.rows[3][10]
+        self.cords=[[180, 0],[180, 20],[180, 40],[180, 60]]
+    def show(self):
+        for toplefts in self.cords:
+            print(self.cords)
+            sq=Square(toplefts[0],toplefts[1])
+            sq.showsq()
+    def movedown(self):
+        if not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520):
+            self.first_sqauare_cords[1] +=40
+            self.second_sqauare_cords[1] +=40
+            self.third_sqauare_cords[1] +=40
+            self.fourth_sqauare_cords[1] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def rotate(self):
+        global numberof_roate
+        if numberof_roate % 2 != 0:
+            self.cords.clear()
+            self.first_sqauare_cords[0]-=40
+            self.first_sqauare_cords[1] += 40
+            self.second_sqauare_cords[0] -= 20
+            self.second_sqauare_cords[1] += 20
+            self.fourth_sqauare_cords[0] += 20
+            self.fourth_sqauare_cords[1] -= 20
+            self.cords = [self.first_sqauare_cords, self.second_sqauare_cords, self.third_sqauare_cords,
+                          self.fourth_sqauare_cords]
+        else:
+            self.cords.clear()
+            self.cords.clear()
+            self.first_sqauare_cords[0] += 40
+            self.first_sqauare_cords[1] -= 40
+            self.second_sqauare_cords[0] += 20
+            self.second_sqauare_cords[1] -= 20
+            self.fourth_sqauare_cords[0] -= 20
+            self.fourth_sqauare_cords[1] += 20
+            self.cords = [self.first_sqauare_cords, self.second_sqauare_cords, self.third_sqauare_cords,
+                          self.fourth_sqauare_cords]
+    def moveright(self):
+        if (not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520)) and ( not (self.first_sqauare_cords[0] >=340) or not self.second_sqauare_cords[0] >= 340 or not (self.third_sqauare_cords[
+            0] >= 340 )or not (self.fourth_sqauare_cords[0] >= 340)):
+
+            self.first_sqauare_cords[0] +=40
+            self.second_sqauare_cords[0] +=40
+            self.third_sqauare_cords[0] +=40
+            self.fourth_sqauare_cords[0] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def moveleft(self):
+        if (not (self.first_sqauare_cords[1] > 520) or not self.second_sqauare_cords[1] > 520 or not (
+                self.third_sqauare_cords[
+                    1] > 520) or not (self.fourth_sqauare_cords[1] > 520)) and (
+                not (self.first_sqauare_cords[0] <=40) or not self.second_sqauare_cords[0] <=40 or not (
+                self.third_sqauare_cords[
+                    0] <=40) or not (self.fourth_sqauare_cords[0] <=40)):
+            self.first_sqauare_cords[0] -=40
+            self.second_sqauare_cords[0] -=40
+            self.third_sqauare_cords[0] -=40
+            self.fourth_sqauare_cords[0] -=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+
+
+class J():#0=rotation1,1=rotation2
+
+    J = [['.....',
+          '.0...',
+          '.000.',
+          '.....',
+          '.....'],
+         ['.....',
+          '..00.',
+          '..0..',
+          '..0..',
+          '.....'],
+         ['.....',
+          '.....',
+          '.000.',
+          '...0.',
+          '.....'],
+         ['.....',
+          '..0..',
+          '..0..',
+          '.00..',
+          '.....']]
+    def __init__(self):
+        self.first_sqauare_cords=grid.rows[0][10]
+        self.second_sqauare_cords=grid.rows[1][10]
+        self.third_sqauare_cords=grid.rows[2][10]
+        self.fourth_sqauare_cords = grid.rows[2][9]
+        self.cords=[[180, 0],[180, 20],[180, 40],[180, 40]]
+    def show(self):
+        for toplefts in self.cords:
+            print(self.cords)
+            sq=Square(toplefts[0],toplefts[1])
+            sq.showsq()
+    def movedown(self):
+        if not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520):
+            self.first_sqauare_cords[1] +=40
+            self.second_sqauare_cords[1] +=40
+            self.third_sqauare_cords[1] +=40
+            self.fourth_sqauare_cords[1] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def rotate(self):
+        global numberof_roate
+        if numberof_roate % 2 != 0:
+            self.cords.clear()
+            self.first_sqauare_cords[0]-=40
+            self.first_sqauare_cords[1] += 40
+            self.second_sqauare_cords[0] -= 20
+            self.second_sqauare_cords[1] += 20
+            self.fourth_sqauare_cords[0] += 20
+            self.fourth_sqauare_cords[1] -= 20
+            self.cords = [self.first_sqauare_cords, self.second_sqauare_cords, self.third_sqauare_cords,
+                          self.fourth_sqauare_cords]
+        else:
+            self.cords.clear()
+            self.cords.clear()
+            self.first_sqauare_cords[0] += 40
+            self.first_sqauare_cords[1] -= 40
+            self.second_sqauare_cords[0] += 20
+            self.second_sqauare_cords[1] -= 20
+            self.fourth_sqauare_cords[0] -= 20
+            self.fourth_sqauare_cords[1] += 20
+            self.cords = [self.first_sqauare_cords, self.second_sqauare_cords, self.third_sqauare_cords,
+                          self.fourth_sqauare_cords]
+    def moveright(self):
+        if (not (self.first_sqauare_cords[1] >520) or not self.second_sqauare_cords[1] > 520 or not (self.third_sqauare_cords[
+            1] > 520 )or not (self.fourth_sqauare_cords[1] > 520)) and ( not (self.first_sqauare_cords[0] >=340) or not self.second_sqauare_cords[0] >= 340 or not (self.third_sqauare_cords[
+            0] >= 340 )or not (self.fourth_sqauare_cords[0] >= 340)):
+
+            self.first_sqauare_cords[0] +=40
+            self.second_sqauare_cords[0] +=40
+            self.third_sqauare_cords[0] +=40
+            self.fourth_sqauare_cords[0] +=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+    def moveleft(self):
+        if (not (self.first_sqauare_cords[1] > 520) or not self.second_sqauare_cords[1] > 520 or not (
+                self.third_sqauare_cords[
+                    1] > 520) or not (self.fourth_sqauare_cords[1] > 520)) and (
+                not (self.first_sqauare_cords[0] <=40) or not self.second_sqauare_cords[0] <=40 or not (
+                self.third_sqauare_cords[
+                    0] <=40) or not (self.fourth_sqauare_cords[0] <=40)):
+            self.first_sqauare_cords[0] -=40
+            self.second_sqauare_cords[0] -=40
+            self.third_sqauare_cords[0] -=40
+            self.fourth_sqauare_cords[0] -=40
+            self.cords.clear()
+            self.cords.extend([[self.first_sqauare_cords[0], self.first_sqauare_cords[1]]
+                              , [self.second_sqauare_cords[0], self.second_sqauare_cords[1]]
+                              , [self.third_sqauare_cords[0], self.third_sqauare_cords[1]],
+                           [self.fourth_sqauare_cords[0], self.fourth_sqauare_cords[1]]])
+
+
+
+
+
+shpe=Z()
+rotate=False
+while True:
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type==droptimer:
+            if not rotate:
+                shpe.movedown()
+        if event.type==pygame.KEYDOWN:
+            if event.key==pygame.K_UP:
+                if not (shpe.first_sqauare_cords[1] > 520) or not shpe.second_sqauare_cords[1] > 520 or not (
+                        shpe.third_sqauare_cords[
+                            1] > 520) or not (shpe.fourth_sqauare_cords[1] > 520):
+                    numberof_roate += 1
+                    rotate=True
+                    #print(numberof_roate)
+                    shpe.rotate()
+                    rotate=False
+        if event.type==pygame.KEYDOWN:
+            if event.key==pygame.K_RIGHT:
+                    shpe.moveright()
+        if event.type==pygame.KEYDOWN:
+            if event.key==pygame.K_LEFT:
+                    shpe.moveleft()
+    screen.fill('pink')
+    shpe.show()
+    grid.draw()
+    pygame.display.update()
+    clock.tick(60)
