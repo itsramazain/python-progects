@@ -1,0 +1,1 @@
+blured=cv.GaussianBlur(img,(7,7),cv.BORDER_DEFAULT)
