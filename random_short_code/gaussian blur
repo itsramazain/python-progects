@@ -1,1 +1,12 @@
 blured=cv.GaussianBlur(img,(7,7),cv.BORDER_DEFAULT)
+def taranslate(img,x,y):
+    translate_matrix=np.float32([[1,0,x],[0,1,y]])
+    dimentions=(img.shape[1],img.shape[0])
+    return cv.warpAffine(img,translate_matrix,dimentions)
+def rotate(img,angel,rotpoint=None):
+    height=img.shape[0]
+    width = img.shape[1]
+    if rotpoint is None:
+        rotpoint=(int(width/2),int(height/2))
+    rotmatrix=cv.getRotationMatrix2D(rotpoint,angel,1.0)
+    return cv.warpAffine(img,rotmatrix,(width,height))
