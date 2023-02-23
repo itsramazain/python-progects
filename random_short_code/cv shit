@@ -52,3 +52,12 @@ img=cv.imread('C:\\Users\\sawa\\Desktop\\opencv-course-master\\Resources\\Photos
 blank=np.zeros(img.shape[:2],dtype='uint8')
 mask=cv.circle(blank,(200,200),100,(255,255,255),-1)
 masked=cv.bitwise_and(img,img,mask=mask)
+
+
+
+
+
+#face detection:
+rec_cascade=cv.CascadeClassifier('C:\\Users\\sawa\\Desktop\\faces_rec.xml')
+faces_rect=rec_cascade.detectMultiScale(gray,1.1,minNeighbors=3 )
+for (x,y,w,h) in faces_rect
